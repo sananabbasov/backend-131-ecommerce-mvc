@@ -21,6 +21,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String seoUrl;
 
     @OneToMany(mappedBy = "category")
     private List<Product> products = new ArrayList<>();

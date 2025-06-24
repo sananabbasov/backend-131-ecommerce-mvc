@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{dashboard/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="container-fluid">
+
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">
+                    <a class="btn btn-success" href="/dashboard/product/create">+</a>
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">Adi</th>
+                            <th scope="col">Şəkil</th>
+                            <th scope="col">Miqdar</th>
+                            <th scope="col">Qiymət</th>
+                            <th scope="col">Endirimli qiymət</th>
+                            <th scope="col">Kateqoriya</th>
+                            <th scope="col">Parametrlər</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="product : ${products}">
+                            <td th:text="${product.name}">Telefonlar</td>
+                            <td>
+                                <img width="50" height="50" th:src="${product.photoUrl}"/>
+                            </td>
+                            <td th:text="${product.quantity}">Telefonlar</td>
+                            <td th:text="${product.price}">Telefonlar</td>
+                            <td th:text="${product.discountPrice}">Telefonlar</td>
+                            <td th:text="${product.category.name}">Telefonlar</td>
+                            <td>
+                                <a class="btn btn-outline-warning" th:href="'/dashboard/product/update/'+${product.id}">Update</a>
+                                <a class="btn btn-outline-danger" th:href="'/dashboard/product/delete/'+${product.id}">Delete</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+</body>
+</html>

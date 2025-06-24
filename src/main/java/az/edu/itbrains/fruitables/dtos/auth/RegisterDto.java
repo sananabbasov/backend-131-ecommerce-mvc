@@ -1,4 +1,5 @@
-package az.edu.itbrains.fruitables.dtos.category;
+package az.edu.itbrains.fruitables.dtos.auth;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +10,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryDashboardDto {
-    private Long id;
+public class RegisterDto {
     private String name;
+    private String surname;
+    private String email;
+    private String password;
 }

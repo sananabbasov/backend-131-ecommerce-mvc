@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{dashboard/layout}">
+
+<head>
+    <meta charset="utf-8">
+    <title>Fruitables - Admin dashboard</title>
+</head>
+
+<body>
+<section layout:fragment="content">
+    <div class="container-fluid">
+
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group">
+                        <label for="name">Adi</label>
+                        <input id="name" name="name"  th:value="${product.name}" class="form-control" type="text" placeholder="Adi daxil edin">
+                    </div>
+                    <div class="form-group">
+                        <label for="shortDescription">Qısa təsviri</label>
+                        <input id="shortDescription" name="shortDescription"  th:value="${product.shortDescription}" class="form-control" type="text" placeholder="Short description daxil edin">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Təsvir</label>
+                        <input id="description" name="description"  th:value="${product.description}" class="form-control" type="text" placeholder="description daxil edin">
+                    </div>
+                    <div class="form-group">
+                        <label for="photoUrl">Şəkil</label>
+                        <input id="photoUrl" name="photoUrl"  th:value="${product.photoUrl}" class="form-control" type="text" placeholder="photoUrl daxil edin">
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Miqdar</label>
+                        <input id="quantity" name="quantity"  th:value="${product.quantity}" class="form-control" type="number" placeholder="quantity daxil edin">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Qiymət</label>
+                        <input id="price" name="price"  th:value="${product.price}" class="form-control" type="number" placeholder="price daxil edin">
+                    </div>
+                    <div class="form-group">
+                        <label for="discountPrice">Endirimli qiyməti</label>
+                        <input id="discountPrice" name="discountPrice"  th:value="${product.discountPrice}" class="form-control" type="number" placeholder="discountPrice daxil edin">
+                    </div>
+                    <div class="form-group">
+                        <label for="categoryId">Kateqoriya</label>
+                        <select id="categoryId" name="categoryId"  th:value="${product.name}" class="form-control">
+                            <option th:selected="${category.id == product.categoryId}" th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}">asdfa</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-warning" type="submit" value="Update">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+</section>
+</body>
+
+</html>
