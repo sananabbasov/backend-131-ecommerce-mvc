@@ -4,18 +4,25 @@ import az.edu.itbrains.fruitables.dtos.auth.RegisterDto;
 import az.edu.itbrains.fruitables.models.User;
 import az.edu.itbrains.fruitables.repositories.UserRepository;
 import az.edu.itbrains.fruitables.services.UserService;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
-    private final ModelMapper modelMapper;
-    private final PasswordEncoder passwordEncoder;
+    private  UserRepository userRepository;
+    private  ModelMapper modelMapper;
+    private  PasswordEncoder passwordEncoder;
+
+    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder){
+
+        this.userRepository = userRepository;
+        this.modelMapper = modelMapper;
+        this.passwordEncoder = passwordEncoder;
+    }
+
+
 
 
     @Override

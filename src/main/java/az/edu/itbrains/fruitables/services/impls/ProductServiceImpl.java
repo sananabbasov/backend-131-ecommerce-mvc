@@ -132,4 +132,9 @@ public class ProductServiceImpl implements ProductService{
         ProductDetailDto productDetailDto = modelMapper.map(findProduct, ProductDetailDto.class);
         return productDetailDto;
     }
+
+    @Override
+    public Product findProductById(Long productId) {
+        return productRepository.findById(productId).orElseThrow();
+    }
 }

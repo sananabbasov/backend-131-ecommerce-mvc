@@ -1,6 +1,7 @@
 package az.edu.itbrains.fruitables.services;
 
 import az.edu.itbrains.fruitables.dtos.product.*;
+import az.edu.itbrains.fruitables.models.Product;
 import az.edu.itbrains.fruitables.payloads.PaginationPayload;
 
 import java.util.List;
@@ -25,4 +26,7 @@ public interface ProductService {
     PaginationPayload<ProductShopDto> getShopProducts(Integer currentPage);
 
     ProductDetailDto getProductDetail(Long id);
-}
+
+    Product findProductById(Long productId);
+
+    }

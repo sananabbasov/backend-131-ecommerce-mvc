@@ -7,4 +7,11 @@ import java.util.List;
 
 public interface BasketRepository extends JpaRepository<Basket,Long> {
 
+    List<Basket> findByUserId(Long userId);
+
+    Basket findByProductId(Long productId);
+
+    Basket findByProductIdAndUserId(Long productId, Long id);
+
+    Basket findByIdAndUserId(Long cartId, Long id);
 }

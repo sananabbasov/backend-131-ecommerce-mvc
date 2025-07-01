@@ -18,32 +18,34 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Autowired
-    private DefaultUserService userDetailsService;
+    private DefaultUserService userDetailService;
+
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-        http.csrf(c->c.disable())
-                .authorizeHttpRequests((request) ->{
-                   request.anyRequest().permitAll();
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf(c -> c.disable())
+                .authorizeHttpRequests((request) -> {
+                    request.requestMatchers("/dashboard/**").authenticated();
+                    request.anyRequest().permitAll();
                 })
-                .formLogin(form -> {
-                    form
-                            .successForwardUrl("/")
-                            .loginPage("/login")
-                            .failureForwardUrl("/login");
+                .formLogin((form) -> {
+                    form.defaultSuccessUrl("/dashboard");
+                    form.loginPage("/login");
+                    form.failureForwardUrl("/login");
                 });
 
 
         return http.build();
     }
 
-    public void configure(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder());
     }
 }
